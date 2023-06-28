@@ -1,48 +1,47 @@
-const express = require("express")
+const express = require('express');
 const routes = express.Router();
 const Usuario = require('../models/usuario')
 
 function createRoute(){
-    routes.post('/usuarios/:meuPArametro', async (req, res) => {
-        console.log('CREATE:', req.body)
+    routes.post('/usuarios', (req, res)=>{
+        console.log(req.body);
         Usuario.create(req.body)
-        res.json();
+        res.json([]);
     });
 }
-
 function findAllRoute(){
-    routes.get('/usuarios/:meuPArametro', (req, res) => {
+    routes.get('/usuarios', (req, res)=>{
+        res.json([]);
+    });
+}
+function findByIdRoute(){
+    routes.get('/usuarios/:meuParametro', (req, res)=>{
+        console.log(req.params)
+        res.json([]);
+    });
+}
+function updatelRoute(){
+    routes.put('/usuarios', (req, res)=>{
+        console.log(req.body);
+        res.json([]);
+    });
+}
+function removeByIdRoute(){
+    routes.delete('/usuarios/:meuParametro', (req, res)=>{
+        console.log(req.params)
         res.json([]);
     });
 }
 
-function findById(){
-    routes.get('/usuarios/:meuPArametro', (req, res) => {
-        console.log(req.params)
-        res.json();
-    });
+
+
+function registraUsuariosRotas(){
+    findAllRoute();
+    createRoute();
+    findByIdRoute();
+    updatelRoute();
+    removeByIdRoute()
+    return routes;
 }
 
-function upDateRoute(){
-    routes.put('/usuarios/:meuPArametro', (req, res) => {
-        console.log('UPDATE', req.params)
-    });
-}
-
-function removeAllRoute(){
-    routes.delete('/usuarios/:meuPArametro', (req, res) => {
-        console.log(req.params)
-        res.json();
-    });
-}
-
-function registerRoutes(){
-    createRoute()
-    findAllRoute()
-    findById()
-    upDateRoute()
-    removeAllRoute()
-    return routes
-}
-
-module.exports = registerRoutes;
+module.exports = registraUsuariosRotas
