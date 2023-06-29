@@ -29,6 +29,7 @@ Usuario.init({
 Usuario.sync()
 .then(()=> {
     console.log('Usuario sincornizado');
+    console.log(Usuario)
 })
 .catch((e) => {
     console.log('Usuario nao sincornizado', e);
