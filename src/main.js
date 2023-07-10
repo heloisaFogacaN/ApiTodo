@@ -19,3 +19,5 @@ app.listen(4300, () => {
     console.log('Servidor rodando rodando na porta 4300');
 });
 require('./usuarios/models/usuario')
+require('./usuarios/models/properties')
+require('./usuarios/models/cardsPermitions')
